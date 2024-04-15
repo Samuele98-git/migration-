@@ -1,6 +1,6 @@
 # migration-
 
-Installation of Gitlab, Mattermost, Taiga and Redmine for migration of system
+Installation of Gitlab, Mattermost, Taiga and Redmine for Docker
 
 
 chmod +x Start.sh
