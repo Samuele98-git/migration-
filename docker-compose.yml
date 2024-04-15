@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  redmine:
+    image: redmine:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - REDMINE_DB_POSTGRES_HOST=postgres
+      - REDMINE_DB_POSTGRES_PORT=5432
+      - REDMINE_DB_DATABASE=redmine
+      - REDMINE_DB_USERNAME=redmine
+      - REDMINE_DB_PASSWORD=mysecretpassword
+    volumes:
+      - ./redmine/data:/usr/src/redmine/files
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: redmine
+      POSTGRES_USER: redmine
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
